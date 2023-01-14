@@ -1,0 +1,15 @@
+version: '3'
+services:
+  db-chat-api:
+    image: postgres:14
+    restart: always
+    ports:
+      - '5444:5432'
+    environment:
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_USER: admin
+      POSTGRES_DB: chat-api-db
+#  chat-api:
+#    build: .
+#    ports:
+#      - '8080:8080'

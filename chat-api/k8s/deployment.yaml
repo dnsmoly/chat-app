@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat-api
+  labels:
+    app: chat-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: chat-api
+  template:
+    metadata:
+      labels:
+        app: chat-api
+    spec:
+      containers:
+        - name: chat-api
+          image: denissmoly/chat-api:1.0.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DATASOURCE_HOST
+              value: 172.30.16.1
+            - name: spring.mvc.servlet.path
+              value: /chat-api
